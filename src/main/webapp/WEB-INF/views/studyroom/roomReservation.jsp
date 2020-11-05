@@ -318,7 +318,7 @@
                  
                         <div>
                            <input type="hidden" id="user_id" name="member_id" value="${sessionScope.loginId }">
-                           <input type="button" class="btn mb-2 btn-outline-primary" id="doubleCheck" value="Check availble time">
+                           <input type="button" class="btn mb-2 btn-outline-primary" id="doubleCheck" value="Check available time">
                            <input type="submit" class="btn mb-2 btn-outline-warning" disabled="disabled" value="Make a reservation" >
                         </div>
                         
