@@ -30,9 +30,7 @@ public class RoomController {
    private final int COUNTPERPAGE = 10; // 한번에 보여줄 예약리스트 수
    private final int PAGEPERGROUP = 5; // 한 페이당 그룹수
 
-   // by heejin 0904
-   // 예약한 목록 리스트
-   // 予約リストを
+   // 개인 예약목록 list 페이지
    @RequestMapping(value="/roomCheck", method=RequestMethod.GET)
    public String checkBook(
          Model model,
