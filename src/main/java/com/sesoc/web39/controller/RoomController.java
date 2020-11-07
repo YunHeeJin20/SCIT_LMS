@@ -30,18 +30,20 @@ public class RoomController {
    private final int COUNTPERPAGE = 10; // 한번에 보여줄 예약리스트 수
    private final int PAGEPERGROUP = 5; // 한 페이당 그룹수
 
-   // 개인 예약목록 list 페이지
+   // 0904 by heejin_개인 예약목록 list
+   // 0907 by heejin_feat : 퇴실 안한 목록 검색
+   // 0922 by heejin_feat : 페이징
    @RequestMapping(value="/roomCheck", method=RequestMethod.GET)
    public String checkBook(
          Model model,
          @RequestParam(value="page", defaultValue = "1") int page) {
       
       
-      //퇴실안한 것만 보여주기
+      //퇴실안한 예약만 보여주기
       RoomVO list = service.oneList();
       model.addAttribute("listOne", list);
       
-      // 스터디룸 목록 -- 수정 modal에 보여줄 것
+      // 예약변경을 위한 스터디룸 목록 조회 -- 수정 modal에 보여줄 것
       ArrayList<RoomVO> roomList = service.listSeat();   
       model.addAttribute("upList", roomList);
       
