@@ -58,9 +58,9 @@
             success: function(res){
                $('#end_tm').html(res);
                $('#end_tm2').html(res);
-               $('.btn-outline-primary').attr("disabled", true); // 퇴실버튼 비활성화하기
-               $('.btn-outline-warning').attr("disabled", true); // 예약취소버튼 비활성화하기
-               $('.btn-outline-success').attr("disabled", true);// 예약수정버튼 비활성화하기
+               $('.btn-outline-primary').attr("disabled", true); //0929 by heejin_Feat: 퇴실버튼 비활성화하기
+               $('.btn-outline-warning').attr("disabled", true); //0929 by heejin_Feat: 예약취소버튼 비활성화하기
+               $('.btn-outline-success').attr("disabled", true);//0929 by heejin_Feat: 예약수정버튼 비활성화하기
 
                alert('Check Out');
             },

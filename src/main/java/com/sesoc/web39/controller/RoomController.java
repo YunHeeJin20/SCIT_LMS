@@ -39,7 +39,7 @@ public class RoomController {
          @RequestParam(value="page", defaultValue = "1") int page) {
       
       
-      //퇴실안한 예약만 보여주기
+      //퇴실안한 예약만 보여주기  위한 oneList 메소드 호출
       RoomVO list = service.oneList();
       model.addAttribute("listOne", list);
       
@@ -47,15 +47,15 @@ public class RoomController {
       ArrayList<RoomVO> roomList = service.listSeat();   
       model.addAttribute("upList", roomList);
       
-      // 페이징을 위한 예약수 조회
+      // 페이징을 위한 예약수 조회를 위한 boardCount 메소드 호출
       int count = service.boardCount();
       
-      // pageNavigater 객체생성
+      // 페이징을 위한 pageNavigater 객체생성
       PageNavigator navi = new PageNavigator(COUNTPERPAGE, PAGEPERGROUP, page, count);
       
-      //개인 예약 전체목록
+      //개인 예약 전체목록을 보여주기 위한 checkeBookOne 메소드 호출
       ArrayList<RoomVO> list2 = service.checkBookOne(navi.getStartRecord(), navi.getCountPerPage());
-      model.addAttribute("seatList2", list2);
+      model.addAttribute("seatList2", list2);	// 화면에 보여줄 리스트 데이터 model에 넣어주기
       
       model.addAttribute("navi", navi); // 페이징을 위해 모델에 넣어주기
       
@@ -64,7 +64,9 @@ public class RoomController {
    
    
    
-   // 퇴실시간 업데이트 , 퇴실시간 검색해서 추가하기
+   // 0910 by heejin_퇴실시간 업데이트 , 
+   // 0914 by heejin_Feat : 퇴실시간 검색해서 화면에 보여주게 return하기
+   // 
       @ResponseBody
       @RequestMapping(value="/roomEnd2", method=RequestMethod.POST)
       public String roomEnd2(RoomVO vo) {
@@ -78,13 +80,13 @@ public class RoomController {
          int seat_sq = vo.getSeat_sq(); // 퇴실하고 타임라인 0으로 업데이트
          String timeLine = vo.getSeat_aloc_strt_tm(); // 퇴실하고 타임라인 0으로 업데이트
                
-         service.updateEndTm2(seat_aloc_sq); // 퇴실시간 업데이트
+         service.updateEndTm2(seat_aloc_sq); // 버튼누른 시간을 퇴실시간으로 업데이트
          
          service.timeLineCheck(seat_sq, timeLine); // 타임라인 0으로 업데이트
          
-         RoomVO result = service.endTm(seat_aloc_sq); // 퇴실시간 검색
-         String seat_aloc_end_tm = result.getSeat_aloc_end_tm();
-         return seat_aloc_end_tm;
+         RoomVO result = service.endTm(seat_aloc_sq); // 업데이트된 퇴실시간 검색을 위한 endTm 메소드호출
+         String seat_aloc_end_tm = result.getSeat_aloc_end_tm(); 
+         return seat_aloc_end_tm; 	// 검색한 퇴실시간을 return 한다
       }
    
       
