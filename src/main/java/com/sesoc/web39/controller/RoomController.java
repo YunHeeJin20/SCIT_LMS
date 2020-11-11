@@ -90,7 +90,7 @@ public class RoomController {
       }
    
       
-   // 예약 업데이트
+   // by heejin_0917 예약 업데이트
    @ResponseBody
    @RequestMapping(value="/updateBook", method=RequestMethod.POST)
    public String updateBook(int seat_aloc_sq, int seat_sq, String seat_aloc_strt_tm, 
@@ -131,18 +131,20 @@ public class RoomController {
       return result;
    }
    
-   // 스터디룸 예약 페이지
+   // by heejin_0904 스터디룸 예약 페이지로 이동
    @RequestMapping(value="/moveBook", method=RequestMethod.GET)
    public String roomBook(Model model) {
       
-      ArrayList<RoomVO> roomList = service.listSeat();   // 스터디룸 목록
+      ArrayList<RoomVO> roomList = service.listSeat();   //예약가능한 스터디룸 목록 검색
       model.addAttribute("roomList", roomList);
       
       return "studyroom/roomReservation";
    }
 
 
-   //스터디룸별로 시간 검색하기
+   // by heejin_0910 스터디룸별로 시간 검색하기
+   // by heejin_0911 ajax로 스터디룸 번호 전달 후 룸별 예약가능시간 검색
+   // by heejin_0913 오류 해결
    // produces = "application/text;charset=utf-8" : text로 보내서 json으로 받으면 406에러 발생 text부분을 json으로 쓰던지 , 사용안하던지해야함!
    @ResponseBody
    @RequestMapping(value="/selectTime", method=RequestMethod.POST)
@@ -150,14 +152,14 @@ public class RoomController {
       
       System.out.println("시간검색 오는 번호 : " + seat_sq);
       
-      ArrayList<TimeLine> timeList = service.selectTime(seat_sq);
+      ArrayList<TimeLine> timeList = service.selectTime(seat_sq); // 예약되지 않은 시간만 검색
       
       System.out.println("db에서 검색한 시간: "+ timeList.size());
       
       return timeList;
    }
    
-   //스터디룸 예약하기
+   // by heejin_0904 스터디룸 예약하기
    @RequestMapping(value="/seatbook", method=RequestMethod.POST)
    public String seatBook(RoomVO vo) {
       System.out.println("예약시간 :" + vo.getSeat_aloc_strt_tm());
@@ -171,7 +173,8 @@ public class RoomController {
       return page;
    }
    
-   //스터디룸 예약취소
+   // by heejin_0910 스터디룸 예약취소
+   // by heejin_0916 스터디룸 예약취소시 타임라인 0으로 업데이트 추가
    @ResponseBody
    @RequestMapping(value="/roomDel", method=RequestMethod.POST)
    public String roomDel(RoomVO vo) {
@@ -197,7 +200,8 @@ public class RoomController {
    }
    
    
-   // 스터디룸 중복예약체크
+   // by heejin_0914 스터디룸 중복예약체크
+   // by heejin_0917 중복예약체크 오류수정
    @ResponseBody
    @RequestMapping(value="/check", method=RequestMethod.GET, produces = "application/text;charset=utf-8")
    public String check(String member_id) {
