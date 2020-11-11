@@ -57,8 +57,6 @@ public class LoginController {
 	        System.out.println("access_token : " + accessToken);
 	        
 	        
-	 
-	        
 	        // access_token을 통해 사용자 정보 요청
 	        JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
 	 

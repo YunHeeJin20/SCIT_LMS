@@ -19,14 +19,14 @@ public class JobFairController {
    @Autowired
    private JobFairService service;
    
-   // 잡페어 등록 페이지 이동
+   // by heejin_1001 잡페어 등록 페이지 이동
    @RequestMapping(value="/jobfairAddForm", method = RequestMethod.GET)
    private String jobFairAddForm() {
       
       return "jobfair/jobfairAddForm";
    }
    
-   // 잡페어 등록
+   // by heejin_1001 잡페어 등록
    @RequestMapping(value="/addJobFair", method = RequestMethod.POST)
    private String jobFairAddForm(JobFairVO vo) {
       System.out.println("등록하는 컨트롤러입니다.");
@@ -36,6 +36,7 @@ public class JobFairController {
       return page;
    }
    
+   // by heejin_1001 서울페어 기업리스트 
    @RequestMapping(value="/jobfairSeoul", method=RequestMethod.GET)
    public String jobfairSeoulPage(Model model) {
       System.out.println("서울페어");
@@ -46,6 +47,7 @@ public class JobFairController {
       return "/jobfair/seoulfair";
    }
    
+   // by heejin_1001 스페셜페어 기업리스트
    @RequestMapping(value="/jobfairSpecial", method=RequestMethod.GET)
    public String jobfairSpecialPage(Model model) {
       System.out.println("스페셜페어");
@@ -56,6 +58,7 @@ public class JobFairController {
       return "/jobfair/specialfair";
    }
    
+   // by heejin_1001 도쿄페어 기업리스트
    @RequestMapping(value="/jobfairTokyo", method=RequestMethod.GET)
    public String jobfairTokyoPage(Model model) {
       System.out.println("도쿄페어 ");
@@ -67,7 +70,7 @@ public class JobFairController {
    }
    
    
-// 수정 , 삭제폼 이동
+   // by heejin_1001 수정 , 삭제폼 이동
    @RequestMapping(value="/editfair", method=RequestMethod.GET)
    public String EditFair(int jobfair_no, Model model) {
       System.out.println(jobfair_no);
@@ -79,7 +82,7 @@ public class JobFairController {
       return "/jobfair/editfair";
    }
    
-   // 페어 기업정보 수정
+   // by heejin_1001 페어 기업정보 수정
    @RequestMapping(value="/updateJobFair", method=RequestMethod.POST)
    public String updateFair(JobFairVO vo) {
       
@@ -88,9 +91,7 @@ public class JobFairController {
       return page;
    }
    
-   // 페어 삭제
-   
-   
+   // by heejin_1001 페어 삭제
    @ResponseBody
    @RequestMapping(value="/deleteFair", method=RequestMethod.GET)
    public int deleteFair(int jobfair_no) {

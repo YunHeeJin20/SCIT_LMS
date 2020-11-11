@@ -45,7 +45,7 @@ public class MemberController2 {
    private String apiResult = null;
    
 
-   
+   // 회원가입폼으로 이동
    @RequestMapping(value="/joinForm", method=RequestMethod.GET)
    public String joinForm() {
       
@@ -53,7 +53,7 @@ public class MemberController2 {
    }
    
    
-   // 로그인 페이지로 이동
+   // by heejin_1016 수정- 로그인 페이지로 이동
    @RequestMapping(value="/loginForm", method={ RequestMethod.GET, RequestMethod.POST })
    public String loginForm(Model model, HttpSession session) {
       
@@ -81,7 +81,7 @@ public class MemberController2 {
 //      return page;
 //   }
    
-   // 1018 회원가입 test , 증명사진 upload
+   // by heejin_1018 회원가입 test , 증명사진 upload
    @RequestMapping(value="/join", method=RequestMethod.POST)
    public String join(MemberVO2 member, MultipartFile upload ) {
       // 파일추가
@@ -100,7 +100,7 @@ public class MemberController2 {
    }
    
    
-   // 1018 마이페이지 이동 , 이미지 보여주기
+   // by heejin_1018 마이페이지 이동 , 이미지 보여주기
       @RequestMapping(value = "/mypage", method=RequestMethod.GET)
       public String mypage(Model model, HttpSession session) throws Exception{
          MemberVO2 member = service2.oneMemeber();
@@ -110,7 +110,7 @@ public class MemberController2 {
          return "mypage";
       }
       
-      //1021 회원정보 수정페이지로 이동
+      // by heejin_1021 회원정보 수정페이지로 이동
      
       @RequestMapping(value = "/moveEditPage", method=RequestMethod.GET)
       public String moveEditPage(Model model) {
@@ -122,6 +122,7 @@ public class MemberController2 {
       
       // 회원정보 수정 -get아닌데 get으로 405오류
       //method= {RequestMethod.GET, RequestMethod.POST}
+      // by heejin_1021 저장된 파일과 함께 회원정보 수정
       @RequestMapping(value="/updateMember", method= {RequestMethod.GET, RequestMethod.POST})
       public String updateMember(MemberVO2 member, MultipartFile upload, HttpServletRequest req) {
          
@@ -133,7 +134,7 @@ public class MemberController2 {
             String fullPath = uploadPath + "/" + member.getSavedfile();   
             boolean result = FileService.deleteFile(fullPath);
             
-            //파일전체경로 확인하기
+            // 파일전체경로 확인하기
             System.out.println("파일삭제를 위한 경로 : " + fullPath);
             // 삭제결과 확인하기
             System.out.println("파일삭제 여부 확인 : " + result);
@@ -153,7 +154,7 @@ public class MemberController2 {
          return page;
       }
       
-      //회원정보 삭제
+      // by heejin_1022 회원정보 저장된 이미지와 함께 삭제
       @RequestMapping(value="/deleteMemberInfo", method = RequestMethod.GET)
       public String deleteMemberInfo(MemberVO2 member) {
          
@@ -177,7 +178,7 @@ public class MemberController2 {
       
       
       
-   // 이미지 보여주기 위한 다운로드 로직
+   // by heejin_1018 저장된 이미지 보여주기 위한 다운로드 로직
       @RequestMapping(value = "/download", method = RequestMethod.GET)
       public String fileDownload(HttpServletResponse response) {
          MemberVO2 member = service2.oneMemeber();   // 이미지 다운 위한 회원정보 받아오기
@@ -219,7 +220,7 @@ public class MemberController2 {
 //      return "tempMember/joinFail";
 //   }   
 
-   // 일반회원 로그인
+   // by heejin_1016 수정- 일반회원 로그인
    @RequestMapping(value="/login", method=RequestMethod.POST)
    public String login(Model model, MemberVO2 member, String member_id, HttpSession session) {
       String page =service2.login2(member);
@@ -231,7 +232,7 @@ public class MemberController2 {
       return page;
    }
    
-   // 로그아웃 
+   // by heejin_1020 수정 - 로그아웃 
    @RequestMapping(value= "/logout", method=RequestMethod.GET , produces = "application/json")
    public String logout(HttpSession session) {
       
@@ -272,6 +273,7 @@ public class MemberController2 {
       return "/mypage";
    }
    
+   // 회원가입시 아이디중복검사
 	@ResponseBody
 	@RequestMapping(value="/idCheck",method=RequestMethod.GET, produces="application/text;charset=utf-8")
 	public String idCheck(String member_id) {
