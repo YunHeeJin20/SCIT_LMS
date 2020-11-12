@@ -25,9 +25,17 @@ public class RoomService {
    
    // 개인예약 list
    public ArrayList<RoomVO> checkBookOne(int startRecord, int countPerPage){
+	  
       String member_id = (String)session.getAttribute("loginId");
+      String kakao_id = (String)session.getAttribute("kakao_id");
+      
       HashMap<String, String> map = new HashMap<String,String>();
-      map.put("member_id", member_id);
+      
+      if(member_id != null) {
+    	  map.put("member_id", member_id);  
+      }else {
+    	  map.put("member_id", kakao_id);
+      }
       
       System.out.println("map에 들어있는 값 : " + map.get("member_id"));
       
@@ -38,8 +46,15 @@ public class RoomService {
    // 페이징을 위한 검색
    public int boardCount() {
       String member_id = (String)session.getAttribute("loginId");
+      String kakao_id = (String)session.getAttribute("kakao_id");
+      
       HashMap<String, Object> map = new HashMap<String,Object>();
-      map.put("member_id", member_id);
+      
+      if(member_id != null) {
+    	  map.put("member_id", member_id);
+      }else {
+    	  map.put("member_id", kakao_id);
+      }
       
       int count = dao.boardCount(map);   // memberid 전달해서 본인 예약수만 조회
       return count;
@@ -62,9 +77,16 @@ public class RoomService {
    // 퇴실안한것만 검색
    public RoomVO oneList() {
       String member_id = (String)session.getAttribute("loginId");
+      String kakao_id = (String)session.getAttribute("kakao_id");
+      
       System.out.println("service member_id : " + member_id);
       HashMap<String, String> map = new HashMap<String, String>();
-      map.put("member_id",member_id );
+      
+      if(member_id != null) {
+    	  map.put("member_id", member_id);
+      }else {
+    	  map.put("member_id", kakao_id);
+      }
       
       RoomVO result = dao.oneList(map);
       return result;
@@ -85,7 +107,13 @@ public class RoomService {
    // 스터디룸 예약하기
    public String seatBook(RoomVO vo) {
       String member_id = (String)session.getAttribute("loginId");
-      vo.setMember_id(member_id);
+      String kakao_id = (String)session.getAttribute("kakao_id");
+      
+      if(member_id != null) {
+    	  vo.setMember_id(member_id);
+      }else {
+    	  vo.setMember_id(kakao_id);
+      }
       
       int cnt = dao.seatBook(vo);
       
@@ -135,7 +163,13 @@ public class RoomService {
    public int roomDel(RoomVO vo) {
       
       String member_id = (String)session.getAttribute("loginId");
-      vo.setMember_id(member_id);
+      String kakao_id = (String)session.getAttribute("kakao_id");
+      
+      if(member_id != null) {
+    	  vo.setMember_id(member_id);  
+      }else {
+    	  vo.setMember_id(kakao_id);
+      }
       
       int result = dao.roomDel(vo); 
       
@@ -145,7 +179,13 @@ public class RoomService {
    // 스터디룸 예약변경
    public int updateBook(RoomVO vo) {
       String member_id = (String)session.getAttribute("loginId");
-      vo.setMember_id(member_id);
+      String kakao_id = (String)session.getAttribute("kakao_id");
+      
+      if(member_id != null) {
+    	  vo.setMember_id(member_id);  
+      }else {
+    	  vo.setMember_id(kakao_id);
+      }
       
       int result = dao.updateBook(vo);
       

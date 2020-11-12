@@ -162,7 +162,7 @@
                
              </c:if>
             <c:if test="${empty memberInfo.savedfile }">
-                     첨부된 이미지가 없습니다.
+                    	 첨부된 이미지가 없습니다.
             </c:if>
             </div>
           </div>

@@ -317,7 +317,13 @@
                           </div>
                  
                         <div>
-                           <input type="hidden" id="user_id" name="member_id" value="${sessionScope.loginId }">
+                        <c:if test="${not empty sessionScope.loginId }">
+                        	<input type="hidden" id="user_id" name="member_id" value="${sessionScope.loginId }">
+                        </c:if>
+                        <c:if test="${empty sessionScope.loginId }">
+                        	<input type="hidden" id="user_id" name="member_id" value="${sessionScope.kakao_id }">
+                        </c:if>
+                           
                            <input type="button" class="btn mb-2 btn-outline-primary" id="doubleCheck" value="Check available time">
                            <input type="submit" class="btn mb-2 btn-outline-warning" disabled="disabled" value="Make a reservation" >
                         </div>

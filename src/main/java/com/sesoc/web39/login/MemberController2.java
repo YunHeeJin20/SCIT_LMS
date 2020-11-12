@@ -185,7 +185,6 @@ public class MemberController2 {
          //원래의 파일명
          String originalfile = new String(member.getOriginalfile());
          try {
-           
             response.setHeader("Content-Disposition", " attachment;filename="+ URLEncoder.encode(originalfile, "UTF-8"));
          } catch (UnsupportedEncodingException e) { 
             e.printStackTrace();

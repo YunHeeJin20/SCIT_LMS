@@ -380,6 +380,9 @@
                               <!--<button class="btnOut" id="${listOne.seat_aloc_sq }">퇴실 ${listOne.seat_aloc_sq }</button>-->
                               <button type="button" class="btn mb-2 btn-outline-primary" id="${listOne.seat_aloc_sq }">CHECK OUT</button>
                            </c:if>
+                           <c:if test="${not empty sessionScope.kakao_id }">
+                           	  <button type="button" class="btn mb-2 btn-outline-primary" id="${listOne.seat_aloc_sq }">CHECK OUT</button>
+                           </c:if>
                         </td>
                      </tr>
                      <tr>
@@ -387,6 +390,9 @@
                         <td>
                            <c:if test="${not empty sessionScope.loginId }">
                               <button type="button" class="btn mb-2 btn-outline-success" data-toggle="modal" data-target="#eventModal">UPDATE</button>
+                           </c:if>
+                           <c:if test="${not empty sessionScope.kakao_id }">
+                           	  <button type="button" class="btn mb-2 btn-outline-success" data-toggle="modal" data-target="#eventModal">UPDATE</button>
                            </c:if>
                         </td>
                      </tr>
@@ -396,6 +402,9 @@
                            <c:if test="${not empty sessionScope.loginId }">
                               <!--<button class="btnDel" id="${listOne.seat_aloc_sq }">예약취소 ${listOne.seat_aloc_sq }</button>-->
                               <button type="button" class="btn mb-2 btn-outline-warning" id="${listOne.seat_aloc_sq }">CANCEL</button>
+                           </c:if>
+                           <c:if test="${not empty sessionScope.kakao_id }">
+                           	  <button type="button" class="btn mb-2 btn-outline-warning" id="${listOne.seat_aloc_sq }">CANCEL</button>
                            </c:if>
                         </td>
                      </tr>
@@ -487,6 +496,9 @@
                       <input type="hidden" id="be_seat_sq" name="seat_sq" value="${listOne.seat_sq }">
                       <button type="button" class="btn mb-2 btn-primary" data-dismiss="modal">close</button>
                       <c:if test="${not empty sessionScope.loginId }">
+                         <button type="button" id="changeTime" class="btn mb-2 btn-primary" data-dismiss="modal">Save Update</button>
+                      </c:if>
+                      <c:if test="${not empty sessionScope.kakao_id }">
                          <button type="button" id="changeTime" class="btn mb-2 btn-primary" data-dismiss="modal">Save Update</button>
                       </c:if>
                     </div>
