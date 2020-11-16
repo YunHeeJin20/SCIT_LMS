@@ -30,7 +30,7 @@ SCIT MASTER 학사관리 시스템
 - Window OS
 - Spring Tool Suite version : 4.3.6 RELEASE
 - Tomcat 8.5
-- Oracle SQL Developer 19.4
+- Oracle SQL Developer : 19.4
 ---------------
 ## 개인 역할
 - 스터디룸 예약 관리 페이지 설계 및 디자인, 중복예약 확인 및 예약처리
