@@ -16,10 +16,10 @@ SCIT MASTER 학사관리 시스템
 ---------------
 ## 사용기술
 
-- JAVA,
+- JAVA
 - HTML,CSS
 - JavaScript, JQuery, Ajax
-- Spring, MyBati, Bootstrap
+- Spring, MyBatis, Bootstrap
 ---------------
 - FullCalendar
 - Kakao 로그인 API, NaverClovaChabot API, Google Maps API
