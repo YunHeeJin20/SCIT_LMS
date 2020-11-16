@@ -8,13 +8,13 @@ SCIT MASTER 학사관리 시스템
 > 역할을 제공한다.
 > 캘린더, 챗봇을 통한 간단한 질의응답, 일본의 IT기업에 대한 상세 정보, 잡페어와 잡페어에 
 > 참가하는 기업정보, 센터의 스터디룸 예약관리, 공지 시 알림 기능을 구현하였다.
-- [시연영상]( https://yunheejin20.github.io/heejin/WebContent/teamProject.html)
+- [시연영상(デモビデオ)]( https://yunheejin20.github.io/heejin/WebContent/teamProject.html)
 ---------------
 ## 프로젝트 기획배경
 
 > 여러 플랫폼을 사용하는 것이 아닌 하나의 플랫폼에서 공지, 잡페어정보, 수업정보, 취업정보를 제공하는 것에 대한 필요성을 느껴 학생관리시스템을 기획
 ---------------
-## 사용기술
+## 사용기술(使用技術)
 
 - JAVA
 - HTML,CSS
@@ -25,7 +25,7 @@ SCIT MASTER 학사관리 시스템
 - Kakao 로그인 API, NaverClovaChabot API, Google Maps API
 - WebSocket
 ---------------
-## 개발환경
+## 개발환경（開発環境）
 
 - Window OS
 - Spring Tool Suite version : 4.3.6 RELEASE
@@ -39,7 +39,7 @@ SCIT MASTER 학사관리 시스템
 - 회원가입시 이미지 업로드, MY PAGE에서 회원정보 수정삭제 시 이미지도 함께 수정삭제 처리
 - 잡페어 관리 CRUD처리
  ---------------
-### 스터디룸별 에약가능시간 확인 
+### 스터디룸별 에약가능시간 확인 （予約可能時間を確認）
 > 이미 예약되어있는 시간은 검색해오지 않는다.
 > 스터디룸별로 현재 예약 가능한 시간만 확인 할 수 있다.
 jsp
@@ -70,7 +70,7 @@ function timeList(){
       }
 ```
 
-### 스터디룸 중복예약확인 처리과정
+### 스터디룸 중복예약확인 처리과정　
 > 이미 예약한 스터디룸이 있다면 중복에약은 할 수 없다.
 > 퇴실이나 예약취소를 진행해야만 새로운 예약을 진행 할 수 있다.
 jsp
@@ -105,7 +105,7 @@ $(document).ready(function(){
       });
 ```
 
-### 스터디룸 퇴실처리
+### 스터디룸 퇴실처리　(退室処理)
 > 스터디룸을 사용 후 퇴실버튼을 클릭하면 예약한 시간은 0으로 업데이트되고 예약 가능한 시간으로 보여지게 된다.
 Controller
 ``` C
@@ -131,7 +131,7 @@ Controller
          return seat_aloc_end_tm; 	// 검색한 퇴실시간을 return 한다
       }
 ```
-### 개인 전체예약리스트 페이징
+### 개인 전체예약리스트 페이징 (ページング)
 Controller
 ``` C
 @RequestMapping(value="/roomCheck", method=RequestMethod.GET)
@@ -163,7 +163,7 @@ Controller
       return "studyroom/checkReservationList";
    }
 ```
-### 회원정보 수정처리
+### 회원정보 수정처리　（会員情報修正）
 Controller 
 ``` C
 @RequestMapping(value="/updateMember", method= {RequestMethod.GET, RequestMethod.POST})
